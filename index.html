@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidyant Classes — SME Content Verification & Approval Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['Merriweather', 'Georgia', 'serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .dark body {
+      background-color: #090d16;
+      color: #f1f5f9;
+    }
+    .card-surface {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+    .dark .card-surface {
+      background: #111827;
+      border-color: #1e293b;
+    }
+    .stem-pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+    .focused-card {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- TOP GLOBAL HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand + Home Button -->
+      <div class="flex items-center gap-3">
+        <button onclick="goHomeDashboard()" class="flex items-center gap-2.5 text-left group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-extrabold flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+            ✓
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-sm sm:text-base tracking-tight text-slate-900 dark:text-white">Vidyant Review Studio</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">SME Portal</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">Decoupled Content Verification · PYQs · 20 Mocks · 8 Games · Vault · Theory · Quizzes</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Right Controls: Live Sync Status + Flagged Queue + Dark Mode -->
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- Automatic Live Cloud Sync Indicator / Instant Refresh Button -->
+        <button onclick="syncLiveNow(true)" id="sync-status-btn" class="px-3 py-1.5 rounded-xl text-xs font-extrabold border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5 hover:bg-emerald-500/20 transition" title="Live Cloud Sync is active — click to refresh now">
+          <span id="sync-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="sync-label">Live Synced</span>
+        </button>
+
+        <!-- Flagged Queue Shortcut -->
+        <button onclick="openGlobalStatusDrawer('flagged')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 transition flex items-center gap-1">
+          <span>🚩 Flagged</span>
+          <span id="header-flagged-count" class="font-mono font-extrabold px-1.5 py-0.2 rounded bg-rose-500 text-white text-[10px]">0</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button onclick="toggleDarkMode()" class="w-8 h-8 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Dark Mode">
+          🌓
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APPLICATION CONTAINER -->
+  <main id="app-root" class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-5">
+    <div class="p-12 text-center text-slate-500">
+      <div class="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-3"></div>
+      <p class="font-bold text-sm">Loading Vidyant Review Studio Manifest (28,497 items across 164 packets)...</p>
+    </div>
+  </main>
+
+  <!-- MODAL CONTAINER -->
+  <div id="modal-root"></div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-root" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <script src="./app.js?v=2.3"></script>
+</body>
+</html>
